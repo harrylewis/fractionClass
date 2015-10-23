@@ -5,7 +5,7 @@
 #include <iostream>
 using namespace std;
 
-#include "fraction.h"	// Add your netid to the #include
+#include "fractionClass.h"	// Add your netid to the #include
 
 int main() {
     
@@ -26,7 +26,7 @@ int main() {
     } catch (FractionException &e) {
         cout << "Exception message should indicate illegal denominator: " << e.what() << endl;
     }
-    
+
     // Test accessors
     cout << "Numerator should be -7: " << test4.numerator() << endl;
     cout << "Denominator should be 2: " << test4.denominator() << endl;
@@ -49,7 +49,7 @@ int main() {
     
     // Test unary negation
     cout << "Should be \"-1/6\": " << -test7 << endl;
-    
+
     // Test pre and post-increment operators
     Fraction test14 = 2 + test3++;
     cout << "Should be \"8/3\": " << test14 << endl;
