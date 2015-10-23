@@ -33,7 +33,6 @@ public:
     Fraction operator += (const Fraction&);
     bool operator <= (const Fraction&);
     bool operator == (const Fraction&);
-    bool operator != (const Fraction&);
     bool operator >= (const Fraction&);
     
     friend bool operator > (const Fraction&, const Fraction&);
@@ -42,6 +41,7 @@ public:
     friend Fraction operator - (const Fraction&, const Fraction&);
     friend Fraction operator * (const Fraction&, const Fraction&);
     friend Fraction operator / (const Fraction&, const Fraction&);
+    friend bool operator != (const Fraction&, const Fraction&);
     friend istream& operator >> (istream&, Fraction&);
     friend ostream& operator << (ostream&, const Fraction&);
     

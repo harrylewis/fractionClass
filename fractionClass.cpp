@@ -7,7 +7,6 @@
 
 // dependencies
 #include <iostream>
-#include <string>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -133,8 +132,8 @@ bool Fraction::operator == (const Fraction& equalizer) {
 }
 
 // inequality operator
-bool Fraction::operator != (const Fraction& negator) {
-    if (numer != negator.numer || denom != negator.denom)
+bool operator != (const Fraction& equalizer, const Fraction& negator) {
+    if (equalizer.numer != negator.numer || equalizer.denom != negator.denom)
         return true;
     return false;
 }
@@ -201,7 +200,33 @@ ostream& operator << (ostream& os, const Fraction& fraction) {
 
 // let's take out of the stream
 istream& operator >> (istream& is, Fraction& fraction) {
-    char val;
-    is >> fraction.numer >> val >> fraction.denom;
+    string input;
+    //Fraction frac;
+    int n, d;
+    getline(is, input);
+    string numerString;
+    string denomString;
+    
+    bool slashFlag(false);
+    
+    for (int i = 0; i < input.length(); i++) {
+        if (input[i] == '/')
+            slashFlag = true;
+    }
+    
+    //in.find
+    if (slashFlag) {
+        for(int i = 0; i < input.length(); i++){
+            if(input[i] == '/'){
+                numerString.append(input.substr(0,i));
+                denomString.append(input.substr(i+1,input.length() - 1));
+                fraction.numer = atoi(numerString.c_str());
+                fraction.denom = atoi(denomString.c_str());
+            }
+        }
+    } else {
+        fraction.numer = atoi(input.c_str());
+        fraction.denom = 1;
+    }
     return is;
 }
